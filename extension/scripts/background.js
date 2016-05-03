@@ -1,7 +1,6 @@
 chrome.browserAction.onClicked.addListener(function (activeTab) {
     chrome.cookies.getAll({url: activeTab.url}, function (cookies) {
         $.each(cookies, function (index, cookie) {
-            console.log(cookie);
             chrome.cookies.remove({
                     url: activeTab.url,
                     name: cookie.name
@@ -10,5 +9,10 @@ chrome.browserAction.onClicked.addListener(function (activeTab) {
         });
     });
 
-    alert('omnomnom');
+    chrome.notifications.create(options = {
+        type: "basic",
+        iconUrl: "images/icon128.png",
+        message: "Omnomnomnom",
+        title: "Cookie Monster says"
+    });
 });
