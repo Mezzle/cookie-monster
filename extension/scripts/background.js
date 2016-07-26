@@ -5,8 +5,16 @@ chrome.browserAction.onClicked.addListener(function (activeTab) {
         },
         function (granted) {
             var message = "Omnomnomnom";
-            
+
             if (granted) {
+                chrome.storage.sync.get("sound", function(data) {
+                    if (data.sound) {
+                        var audio = new Audio();
+                        audio.src = chrome.extension.getURL('/sound/omnomnom.mp3');
+                        audio.play();
+                    }
+                });
+
                 chrome.cookies.getAll({url: activeTab.url}, function (cookies) {
                     $.each(cookies, function (index, cookie) {
                         chrome.cookies.remove({

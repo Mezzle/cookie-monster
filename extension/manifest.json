@@ -19,10 +19,12 @@
     },
     "permissions": [
         "activeTab",
-        "notifications"
+        "notifications",
+        "storage"
     ],
     "optional_permissions": [
         "<all_urls>",
         "cookies"
-    ]
+    ],
+    "options_page": "html/options.html"
 }
