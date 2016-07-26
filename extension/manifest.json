@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "Cookie Monster",
     "description": "Clears cookies for current website",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "browser_action": {
         "default_icon": "images/icon.png"
     },
