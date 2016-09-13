@@ -24,6 +24,18 @@ chrome.browserAction.onClicked.addListener(function (activeTab) {
                         );
                     });
                 });
+
+                chrome.storage.sync.get("clearLocalStorage", function(data) {
+                    if (data.clearLocalStorage) {
+                        chrome.tabs.executeScript({code:'localStorage.clear();'})
+                    }
+                });
+
+                chrome.storage.sync.get("clearSessionStorage", function(data) {
+                    if (data.clearSessionStorage) {
+                        chrome.tabs.executeScript({code:'localStorage.clear();'})
+                    }
+                });
             } else {
                 message = "Cookie Monster is sad that there are no cookies";
             }
