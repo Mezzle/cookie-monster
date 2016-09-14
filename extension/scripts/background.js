@@ -7,10 +7,9 @@ chrome.browserAction.onClicked.addListener(function (activeTab) {
             var message = "Omnomnomnom";
 
             if (granted) {
-
                 chrome.storage.sync.get(
                     ['sound', 'clearLocalStorage', 'clearSessionStorage'],
-                    function(data) {
+                    function (data) {
                         if (data.sound) {
                             var audio = new Audio();
                             audio.src = chrome.extension.getURL('/sound/omnomnom.mp3');
@@ -18,23 +17,25 @@ chrome.browserAction.onClicked.addListener(function (activeTab) {
                         }
 
                         if (data.clearLocalStorage) {
-                            chrome.tabs.executeScript({code:'localStorage.clear();'})
+                            chrome.tabs.executeScript({code: 'localStorage.clear();'})
                         }
 
                         if (data.clearSessionStorage) {
-                            chrome.tabs.executeScript({code:'localStorage.clear();'})
+                            chrome.tabs.executeScript({code: 'localStorage.clear();'})
                         }
                     }
                 );
 
                 chrome.cookies.getAll({url: activeTab.url}, function (cookies) {
-                    $.each(cookies, function (index, cookie) {
-                        chrome.cookies.remove({
-                                url: activeTab.url,
-                                name: cookie.name
-                            }
-                        );
-                    });
+                    if (cookies) {
+                        $.each(cookies, function (index, cookie) {
+                            chrome.cookies.remove({
+                                    url: activeTab.url,
+                                    name: cookie.name
+                                }
+                            );
+                        });
+                    }
                 });
             } else {
                 message = "Cookie Monster is sad that there are no cookies";
