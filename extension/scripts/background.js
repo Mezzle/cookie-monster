@@ -1,19 +1,31 @@
 chrome.browserAction.onClicked.addListener(function (activeTab) {
     chrome.permissions.request({
-            permissions: ['cookies'],
+            permissions: ['activeTab', 'cookies'],
             origins: [activeTab.url]
         },
         function (granted) {
             var message = "Omnomnomnom";
 
             if (granted) {
-                chrome.storage.sync.get("sound", function(data) {
-                    if (data.sound) {
-                        var audio = new Audio();
-                        audio.src = chrome.extension.getURL('/sound/omnomnom.mp3');
-                        audio.play();
+
+                chrome.storage.sync.get(
+                    ['sound', 'clearLocalStorage', 'clearSessionStorage'],
+                    function(data) {
+                        if (data.sound) {
+                            var audio = new Audio();
+                            audio.src = chrome.extension.getURL('/sound/omnomnom.mp3');
+                            audio.play();
+                        }
+
+                        if (data.clearLocalStorage) {
+                            chrome.tabs.executeScript({code:'localStorage.clear();'})
+                        }
+
+                        if (data.clearSessionStorage) {
+                            chrome.tabs.executeScript({code:'localStorage.clear();'})
+                        }
                     }
-                });
+                );
 
                 chrome.cookies.getAll({url: activeTab.url}, function (cookies) {
                     $.each(cookies, function (index, cookie) {
@@ -23,18 +35,6 @@ chrome.browserAction.onClicked.addListener(function (activeTab) {
                             }
                         );
                     });
-                });
-
-                chrome.storage.sync.get("clearLocalStorage", function(data) {
-                    if (data.clearLocalStorage) {
-                        chrome.tabs.executeScript({code:'localStorage.clear();'})
-                    }
-                });
-
-                chrome.storage.sync.get("clearSessionStorage", function(data) {
-                    if (data.clearSessionStorage) {
-                        chrome.tabs.executeScript({code:'localStorage.clear();'})
-                    }
                 });
             } else {
                 message = "Cookie Monster is sad that there are no cookies";
