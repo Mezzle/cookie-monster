@@ -1,23 +1,26 @@
-(function ($) {
-    $(function () {
-        chrome.storage.sync.get(
-            ['sound', 'clearLocalStorage', 'clearSessionStorage'],
-            function (data) {
-                $('#sound').prop("checked", data.sound);
-                $('#local-storage').prop("checked", data.clearLocalStorage);
-                $('#session-storage').prop("checked", data.clearSessionStorage);
-            }
-        );
+chrome.storage.sync.get(
+  ["sound", "clearLocalStorage", "clearSessionStorage"],
+  function(data) {
+    document.getElementById("sound").checked = data.sound;
+    document.getElementById("local-storage").checked = data.clearLocalStorage;
+    document.getElementById("session-storage").checked =
+      data.clearSessionStorage;
+  }
+);
 
-        $('#save_btn').closest('form').submit(function (e) {
-            e.preventDefault();
-            chrome.storage.sync.set({
-                'sound': $('#sound').prop("checked"),
-                'clearLocalStorage': $('#local-storage').prop('checked'),
-                'clearSessionStorage': $('#session-storage').prop('checked')
-            }, function () {
-                window.alert('The options have been saved!');
-            });
-        });
-    });
-})(jQuery);
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelector("form").addEventListener("submit", e => {
+    e.preventDefault();
+
+    chrome.storage.sync.set(
+      {
+        sound: document.getElementById("sound").checked,
+        clearLocalStorage: document.getElementById("local-storage").checked,
+        clearSessionStorage: document.getElementById("session-storage").checked
+      },
+      () => {
+        window.alert("The options have been saved!");
+      }
+    );
+  });
+});
