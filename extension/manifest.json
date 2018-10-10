@@ -12,7 +12,7 @@
     "128": "images/icon128.png"
   },
   "background": {
-    "scripts": ["scripts/background.js"]
+    "page": "html/background.html"
   },
   "permissions": ["notifications", "storage", "tabs"],
   "optional_permissions": ["<all_urls>", "activeTab", "cookies"],

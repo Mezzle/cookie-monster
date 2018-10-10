@@ -1,33 +1,36 @@
 <!doctype html>
 <html>
+
 <head>
-    <link href="/styles/options.css" rel="stylesheet">
-    <script src="/scripts/options.js"></script>
+    <link href="../styles/options.css" rel="stylesheet">
+    <script type="module" src="../src/pages/options.js"></script>
 </head>
+
 <body>
-<div class="container">
-    <div class="header">
-        <h1 class="title">Cookie Monster</h1>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">Cookie Monster</h1>
+        </div>
+        <div class="content">
+            <form action="" class="options">
+                <div class="option">
+                    <label for="sound">Use Sound?</label>
+                    <input type="checkbox" id="sound" name="sound" />
+                </div>
+                <div class="option">
+                    <label for="local-storage">Clear Local Storage?</label>
+                    <input type="checkbox" id="local-storage" name="local-storage" />
+                </div>
+                <div class="option">
+                    <label for="session-storage">Clear Session Storage?</label>
+                    <input type="checkbox" id="session-storage" name="session-storage" />
+                </div>
+                <div class="buttons">
+                    <button id="save_btn" class="button">Save</button>
+                </div>
+            </form>
+        </div>
     </div>
-    <div class="content">
-        <form action="" class="options">
-            <div class="option">
-                <label for="sound">Use Sound?</label>
-                <input type="checkbox" id="sound" name="sound" />
-            </div>
-            <div class="option">
-                <label for="local-storage">Clear Local Storage?</label>
-                <input type="checkbox" id="local-storage" name="local-storage" />
-            </div>
-            <div class="option">
-                <label for="session-storage">Clear Session Storage?</label>
-                <input type="checkbox" id="session-storage" name="session-storage" />
-            </div>
-            <div class="buttons">
-                <button id="save_btn" class="button">Save</button>
-            </div>
-        </form>
-    </div>
-</div>
 </body>
+
 </html>
