@@ -19,6 +19,16 @@
         "doc",
         "ideas"
       ]
+    },
+    {
+      "login": "alexdenvir",
+      "name": "Alex Denvir",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/1412074?v=4",
+      "profile": "https://coldfff.com",
+      "contributions": [
+        "code",
+        "ideas"
+      ]
     }
   ],
   "contributorsPerLine": 7
