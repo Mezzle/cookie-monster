@@ -1,5 +1,7 @@
 # Cookie Monster
 [![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/Mezzle/cookie-monster.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Mezzle/cookie-monster/alerts/)
+[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/Mezzle/cookie-monster.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Mezzle/cookie-monster/context:javascript)
 
 [![Available in the Chrome Web Store](https://developer.chrome.com/webstore/images/ChromeWebStore_Badge_v2_496x150.png)](https://chrome.google.com/webstore/detail/cookie-monster/ibfpgnoikflmicceihaikagpmilpnlic)
 
